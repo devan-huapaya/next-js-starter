@@ -9,8 +9,9 @@ const fakeUser = {
     lastName: 'Last'
   }
 }
+
 export const slice = createSlice({
-  name: 'counter',
+  name: 'auth',
   initialState: {
     user: undefined,
     signedIn: false,
@@ -18,10 +19,6 @@ export const slice = createSlice({
   },
   reducers: {
     signInUser: (state, action) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.user = action.payload;
       state.signedIn = true;
     },
@@ -38,13 +35,8 @@ export const slice = createSlice({
 export const { logoutUser } = slice.actions;
 const {isLoading, signInUser } = slice.actions
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched
 /**
  * Dispatches actions to login the current user
- * 
  */
 export const loginUser = () => dispatch => {
   setTimeout(() => {
@@ -54,9 +46,9 @@ export const loginUser = () => dispatch => {
   }, 1000);
 };
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state) => state.counter.value)`
+/**
+ * @returns user auth object
+ */
 export const getAuthUser = state => state.auth;
   
 export default slice.reducer;
