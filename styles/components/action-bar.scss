@@ -1,0 +1,17 @@
+.actionBar {
+	@extend .d-flex;
+	@extend .justify-content-between;
+	@extend .align-items-center;
+	@extend .py-4;
+	@extend .bg-primary;
+	@extend .bg-primary;
+	@extend .text-light;
+	
+	a {
+		@extend .text-light;
+		&:hover {
+			@extend .text-light;
+		}
+	}
+	min-height: 2rem;
+}

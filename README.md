@@ -31,7 +31,7 @@ Test it:
 Replace `<github-user-name>` and `<github-project-name>`
 
 ```bash
-https://<github-user-name>.github.io/<github-project-name>/
+https://devan-huapaya.github.io/next-js-starter/
 ```
 
 Example:
