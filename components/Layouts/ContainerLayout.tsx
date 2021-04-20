@@ -1,20 +1,23 @@
-import SignIn from '../SignIn'
-import CRC from '../CRC'
+import ComponentProps from '~types/componentProps'
+import CRC from '~ui/CRC'
 import DefaultLayout from './Default'
-import { Text } from '@fluentui/react';
 
-export default function ContainerLayout({children, title}) {
-  return (
-    <>
-      <DefaultLayout >
+export default function ContainerLayout({ children, title }: ContainerLayoutProps): JSX.Element {
+	return (
+		<>
+			<DefaultLayout>
 				<CRC>
-					{title && (
-						<h1 className='mt-5'>{title}</h1>
-					)}
+					<>
+						{title && <h1 className='mt-5'>{title}</h1>}
 
-					{children}
+						{children}
+					</>
 				</CRC>
 			</DefaultLayout>
-    </>
-  )
+		</>
+	)
+}
+
+interface ContainerLayoutProps extends ComponentProps {
+	title?: string
 }

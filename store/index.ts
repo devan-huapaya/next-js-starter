@@ -1,25 +1,33 @@
-import { configureStore } from '@reduxjs/toolkit'
-// import localStorage from '../utils/localStorage'
-import { persistStore, persistReducer } from 'redux-persist'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { useDispatch } from 'react-redux'
+import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import reducers from './slices'
-import { combineReducers } from '@reduxjs/toolkit'
 
-// export default configureStore()
+// Combine all reducers
 const rootReducer = combineReducers(reducers)
-export type RootState = ReturnType<typeof rootReducer>
 
+// Persist to local storage config
 const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['auth', 'pageReducer'], //Things u want to persist
-  blacklist: [], //Things u dont
+	key: 'root',
+	storage,
+	whitelist: ['auth', 'pageReducer'], //Things u want to persist
+	blacklist: [] //Things u dont
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
+// Export type of the root reducer
+export type RootState = ReturnType<typeof persistedReducer>
 
-export let store = configureStore({reducer: persistedReducer})
-export let persistor = persistStore(store)
+// Create and export the store
+export const store = configureStore({ reducer: persistedReducer })
 
-// export default { store, persistor }
+// Persist store to local storage
+export const persistor = persistStore(store)
+
+// Export type of the dispatch function
+export type AppDispatch = typeof store.dispatch
+
+// Export a hook that can be reused to resolve types
+export const useAppDispatch = (): AppDispatch => useDispatch<AppDispatch>()

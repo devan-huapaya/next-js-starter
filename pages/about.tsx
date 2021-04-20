@@ -1,19 +1,19 @@
+import { IStackTokens, Stack, Text } from '@fluentui/react'
 import Link from 'next/link'
-import { DefaultButton, PrimaryButton, Stack, IStackTokens, Text } from '@fluentui/react';
-const stackTokens: IStackTokens = { childrenGap: 40 };
-import Layout from '../components/Layouts/ContainerLayout'
+import Layout from '~layouts/ContainerLayout'
+const stackTokens: IStackTokens = { childrenGap: 40 }
 
-export default function About() {
-  return (
-    <Layout title='About us'>
+export default function About(): JSX.Element {
+	return (
+		<Layout title='About us'>
 			<Stack tokens={stackTokens}>
 				<Text>
 					Back to{' '}
-					<Link href="/" as={process.env.BACKEND_URL + '/'}>
+					<Link href='/' as={process.env.BACKEND_URL + '/'}>
 						<a>Home</a>
 					</Link>
 				</Text>
 			</Stack>
-    </Layout>
-  )
+		</Layout>
+	)
 }

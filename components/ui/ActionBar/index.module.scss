@@ -1,0 +1,8 @@
+@use '~styles/lib/breakpoints' as *;
+@use '~styles/lib/spacer' as *;
+
+.actionBar {
+	@include break('lg') {
+		min-height: space(8);
+	}
+}

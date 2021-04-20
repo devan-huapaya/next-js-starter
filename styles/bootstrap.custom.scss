@@ -3,8 +3,9 @@
 
 // Include any default variable overrides here (though functions won't be available)
 
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
 
+// TODO: Optomize bootstrap loading
 // Then add additional custom code here
 
 // // Option B: Include parts of Bootstrap
@@ -31,8 +32,6 @@
 // @import "~bootstrap/scss/utilities";
 
 // 5. Add additional custom code here
-
-@import './styles/components/action-bar.scss';
 
 .container {
 	transition: max-width 0.5s ease-in-out;
